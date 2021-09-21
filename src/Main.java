@@ -6,7 +6,10 @@ public class Main {
         trimestre.inc();trimestre.inc();trimestre.inc();
         trimestre.affiche();
         trimestre.inc();
-        trimestre.affiche();*/
+        trimestre.affiche();
+        CompteurSimple copieTrimestre = trimestre.copie();
+        copieTrimestre.affiche();
+        System.out.println(trimestre.compare(copieTrimestre));*/
 
         CompteurCompose c;
         c = new CompteurCompose(new CompteurSimple(0,59,"Minute"),
@@ -17,6 +20,11 @@ public class Main {
             c.inc();
         }
         c.affiche();
+
+        CompteurCompose p;
+        p = c.copie();
+        p.affiche();
+        System.out.println(c.compare(p));
 
     }
 }

@@ -3,49 +3,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CompteurCompose {
-    /*int init;
-    int max;
-    String name;
-    int compteur;*/
+
     CompteurSimple compteurSimple;
-    CompteurCompose compteurCompose;
-    static List<CompteurSimple> compteurSimplesList = new ArrayList<>();
-    static int listSize;
+    CompteurCompose suivant;
+
 
     public CompteurCompose(CompteurSimple compteurSimple){
-        /*this.init = compteurSimple.init;
-        this.max = compteurSimple.max;
-        this.name = compteurSimple.name;
-        this.compteur = compteurSimple.init;*/
-        compteurSimplesList.add(compteurSimple);
-        listSize = listSize +1;
+
+        this.compteurSimple = compteurSimple;
 
     }
 
     public CompteurCompose(CompteurSimple compteurSimple,CompteurCompose compteurCompose){
-        compteurSimplesList.add(compteurSimple);
-        //this.compteurCompose = compteurCompose;
-        listSize = listSize +1;
+
+        this.compteurSimple = compteurSimple;
+        this.suivant = compteurCompose;
     }
 
-    int x= listSize-1;
 
-    public boolean inc(){
 
-        if (compteurSimplesList.get(x).inc()){
-            x -=1;
-            this.inc();
+    public void inc(){
+            if(this.compteurSimple.inc()){
+                if(this.suivant != null){
+                    this.suivant.inc();
+            }
         }
-        x= 2;
-        return false;
     }
 
     public void affiche(){
-        for(CompteurSimple compteurSimple : compteurSimplesList){
-
-            compteurSimple.affiche();
-        }
+            if(this.suivant != null) {
+                this.suivant.affiche();
+                this.compteurSimple.affiche();
+            }else{
+                this.compteurSimple.affiche();
+            }
     }
 
+    public CompteurCompose copie(){
+        return new CompteurCompose(this.compteurSimple, this.suivant);
+    }
+
+    public boolean compare(CompteurCompose compteurCompose){
+        if(this.compteurSimple.compare(compteurCompose.compteurSimple)){
+            if(this.suivant != null){
+                return this.suivant.compare(compteurCompose.suivant);
+            }return true;
+        }
+        return false;
+    }
 
 }

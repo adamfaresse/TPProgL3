@@ -24,4 +24,20 @@ public class CompteurSimple {
     public void affiche(){
         System.out.println(name +":"+ this.compteur);
     }
+
+    public CompteurSimple copie(){
+        CompteurSimple copieCompteurSimple = new CompteurSimple(this.init,this.max,this.name);
+        copieCompteurSimple.compteur = this.compteur;
+        return copieCompteurSimple;
+    }
+    public boolean compare(CompteurSimple compteurSimple){
+        if (compteurSimple.init == this.init){
+            if(compteurSimple.max == this.max){
+                if (compteurSimple.name.equals(this.name)){
+                    return compteurSimple.compteur == this.compteur;
+                }
+            }
+        }
+        return false;
+    }
 }
