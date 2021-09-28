@@ -40,12 +40,10 @@ public class CompteurCompose {
     }
 
     public CompteurCompose copie(){
-        CompteurCompose copieCompteurCompose ;
-        if(this.suivant != null){
-            copieCompteurCompose = new CompteurCompose(this.compteurSimple.copie(),this.suivant.copie());
+        if(this.suivant == null){
+            return new  CompteurCompose(this.compteurSimple.copie());
         }
-
-        return copieCompteurCompose = new CompteurCompose(this.compteurSimple.copie());
+        return new CompteurCompose(this.compteurSimple.copie(), this.suivant.copie());
     }
 
     public boolean compare(CompteurCompose compteurCompose){
