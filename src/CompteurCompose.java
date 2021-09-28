@@ -40,13 +40,20 @@ public class CompteurCompose {
     }
 
     public CompteurCompose copie(){
-        return new CompteurCompose(this.compteurSimple, this.suivant);
+        CompteurCompose copieCompteurCompose ;
+        if(this.suivant != null){
+            copieCompteurCompose = new CompteurCompose(this.compteurSimple.copie(),this.suivant.copie());
+        }
+
+        return copieCompteurCompose = new CompteurCompose(this.compteurSimple.copie());
     }
 
     public boolean compare(CompteurCompose compteurCompose){
         if(this.compteurSimple.compare(compteurCompose.compteurSimple)){
             if(this.suivant != null){
-                return this.suivant.compare(compteurCompose.suivant);
+                if(compteurCompose.suivant != null){
+                    return this.suivant.compare(compteurCompose.suivant);
+                }
             }return true;
         }
         return false;
