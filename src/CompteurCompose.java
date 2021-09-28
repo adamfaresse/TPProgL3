@@ -54,7 +54,9 @@ public class CompteurCompose {
                 }else{
                     return false;
                 }
-            }return true;
+            }else if (compteurCompose.suivant == null){
+                return true;
+            }return false;
         }
         return false;
     }
