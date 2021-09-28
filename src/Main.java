@@ -23,8 +23,10 @@ public class Main {
 
         CompteurCompose p;
         p = c.copie();
-        p.affiche();
+
         System.out.println(c.compare(p));
+        p.affiche();
+
 
     }
 }

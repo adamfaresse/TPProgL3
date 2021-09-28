@@ -53,6 +53,8 @@ public class CompteurCompose {
             if(this.suivant != null){
                 if(compteurCompose.suivant != null){
                     return this.suivant.compare(compteurCompose.suivant);
+                }else{
+                    return false;
                 }
             }return true;
         }
